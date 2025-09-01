@@ -2,201 +2,223 @@
 <html lang="ar">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
-    rel="stylesheet">
-  <title>مواقيت الصلاة</title>
-  <style>
-    body {
-      background: linear-gradient(45deg, #240165, #05001c);
-      direction: rtl;
-      color: #fffde3;
-      font-family: "Tajawal", sans-serif;
-      margin: 0;
-      padding: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
+        rel="stylesheet">
+    <title>مواقيت الصلاة</title>
+    <style>
+        body {
+            background: linear-gradient(45deg, #240165, #05001c);
+            direction: rtl;
+            color: #fffde3;
+            font-family: "Tajawal", sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-    h1,
-    h6 {
-      margin: 0;
-    }
+        h1,
+        h6 {
+            margin: 0;
+        }
 
-    .header-section {
-      padding: 30px;
-      text-align: center;
-    }
+        .header-section {
+            padding: 30px;
+            text-align: center;
+        }
 
-    .header-section h1 {
-      font-size: 90px;
-      font-weight: 500;
-    }
+        .header-section h1 {
+            font-size: 90px;
+            font-weight: 500;
+        }
 
-    .header-section h6 {
-      font-size: 22px;
-      font-weight: 300;
-      margin-top: 10px;
-    }
+        .header-section h6 {
+            font-size: 22px;
+            font-weight: 300;
+            margin-top: 10px;
+        }
 
-    hr {
-      border: 0.5px solid #ffffff55;
-      margin-top: 15px;
-    }
+        hr {
+            border: 0.5px solid #ffffff55;
+            margin-top: 15px;
+        }
 
-    .city-section {
-      display: flex;
-      justify-content: center;
-      margin: 20px 0;
-    }
+        .city-section {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
 
-    .city-select {
-      font-family: "Tajawal", sans-serif;
-      font-size: 18px;
-      padding: 10px 20px;
-      border: 2px solid #ffffffaa;
-      border-radius: 40px;
-      background: transparent; 
-      color: #fffde3;
-      outline: none;
-      cursor: pointer;
-      width: 300px;
-    }
+        .city-select {
+            font-family: "Tajawal", sans-serif;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: 2px solid #ffffffaa;
+            border-radius: 40px;
+            background: transparent;
+            color: #fffde3;
+            outline: none;
+            cursor: pointer;
+            width: 300px;
+        }
 
-    .city-select option {
-      color: black; /* يظهر النص واضح داخل القائمة */
-    }
+        .city-select option {
+            color: black;
+            /* يظهر النص واضح داخل القائمة */
+        }
 
-    .cards-container {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      padding: 20px;
-    }
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
 
-    .card {
-      width: 150px;
-      border-radius: 15px;
-      overflow: hidden;
-      background: white;
-      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
-      transition: transform 0.3s;
-    }
+        .card {
+            width: 150px;
+            border-radius: 15px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s;
+        }
 
-    .card:hover {
-      transform: scale(1.05);
-    }
+        .card:hover {
+            transform: scale(1.05);
+        }
 
-    .card-header {
-      background: linear-gradient(45deg, #360297, #6c53d7);
-      color: white;
-      text-align: center;
-      padding: 10px;
-      font-size: 20px;
-      font-weight: 600;
-    }
+        .card-header {
+            background: linear-gradient(45deg, #360297, #6c53d7);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 20px;
+            font-weight: 600;
+        }
 
-    .card-body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: rgb(255, 255, 255);
-      color: black;
-      padding: 20px;
-      font-size: 28px;
-      font-weight: 500;
-    }
-  </style>
+        .card-body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(255, 255, 255);
+            color: black;
+            padding: 20px;
+            font-size: 28px;
+            font-weight: 500;
+        }
+    </style>
 </head>
 
 <body>
-  <!-- Header -->
-  <div class="header-section">
-    <h1>الرياض</h1>
-    <h6 id="displayDate"></h6>
-    <hr>
-  </div>
-
-
-  <!-- Cards -->
-  <div class="cards-container">
-    <div class="card">
-      <div class="card-header">الفجر</div>
-      <div class="card-body" id="Fajr-time"></div>
+    <!-- Header -->
+    <div class="header-section">
+        <h1>الرياض</h1>
+        <h6 id="displayDate"></h6>
+        <hr>
     </div>
 
-    <div class="card">
-      <div class="card-header">الشروق</div>
-      <div class="card-body" id="Sunrise-time"></div>
+
+    <!-- Cards -->
+    <div class="cards-container">
+        <div class="card">
+            <div class="card-header">الفجر</div>
+            <div class="card-body" id="Fajr-time"></div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">الشروق</div>
+            <div class="card-body" id="Sunrise-time"></div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">الظهر</div>
+            <div class="card-body" id="Dhuhr-time"></div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">العصر</div>
+            <div class="card-body" id="Asr-time"></div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">المغرب</div>
+            <div class="card-body" id="Maghrib-time"></div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">العشاء</div>
+            <div class="card-body" id="Isha-time"></div>
+        </div>
     </div>
 
-    <div class="card">
-      <div class="card-header">الظهر</div>
-      <div class="card-body" id="Dhuhr-time"></div>
-    </div>
-
-    <div class="card">
-      <div class="card-header">العصر</div>
-      <div class="card-body" id="Asr-time"></div>
-    </div>
-
-    <div class="card">
-      <div class="card-header">المغرب</div>
-      <div class="card-body"id="Maghrib-time"></div>
-    </div>
-
-    <div class="card">
-      <div class="card-header">العشاء</div>
-      <div class="card-body"id="Isha-time"></div>
-    </div>
-  </div>
-
-  <!-- City Selector -->
-  <div class="city-section">
-    <select class="city-select" id="city">
-      <option>الرياض</option>
+    <!-- City Selector -->
+    <div class="city-section">
+        <select class="city-select" id="cities-select">
+            <!-- <option>الرياض</option>
       <option>مكة</option>
       <option>المدينة</option>
       <option>جدة</option>
       <option>الدمام</option>
-      <option>أبها</option>
-    </select>
-  </div>
+      <option>أبها</option> -->
+
+
+
+        </select>
+    </div>
 </body>
 
 
-<script src="./node_modules/axios/dist/axios.min.js" ></script>
+<script src="./node_modules/axios/dist/axios.min.js"></script>
 <script>
-    let params = {
-        country : "SA",
-        city : "Makkah al Mukarramah"
+    const cities = [
+        "الرياض", "جدة", "مكة", "المدينة"
+    ]
+    for (let city of cities) {
+        const content = `
+    <option>${city}</option>
+    `
+        document.getElementById("cities-select").innerHTML += content
+
     }
-axios.get('https://api.aladhan.com/v1/timingsByCity', {
-    params: params 
-  }) 
-  .then(function (response) {
-    const timings = response.data.data.timings
-    console.log(response.data.data.date.hijri.weekday.ar);
-    document.getElementById("Fajr-time").innerHTML= timings.Fajr
-    document.getElementById("Sunrise-time").innerHTML= timings.Sunrise
-    document.getElementById("Dhuhr-time").innerHTML= timings.Dhuhr
-    document.getElementById("Asr-time").innerHTML= timings.Asr
-    document.getElementById("Maghrib-time").innerHTML= timings.Maghrib
-    document.getElementById("Isha-time").innerHTML= timings.Isha
 
-    const readableDate = response.data.data.date.readable
-    const theDayname = response.data.data.date.hijri.weekday.ar
-    const date = readableDate + " " + theDayname
-     document.getElementById("displayDate").innerHTML= date
+    document.getElementById("cities-select").addEventListener("change", function () {
+        citySelected= this.value
+        
+    })
 
 
-  })
-  .catch(function (error) {
-    console.log(error);
-  })
+
+    let params = {
+        country: "SA",
+        city: "Makkah al Mukarramah"
+    }
+    axios.get('https://api.aladhan.com/v1/timingsByCity', {
+        params: params
+    })
+        .then(function (response) {
+            const timings = response.data.data.timings
+            console.log(response.data.data.date.hijri.weekday.ar);
+            document.getElementById("Fajr-time").innerHTML = timings.Fajr
+            document.getElementById("Sunrise-time").innerHTML = timings.Sunrise
+            document.getElementById("Dhuhr-time").innerHTML = timings.Dhuhr
+            document.getElementById("Asr-time").innerHTML = timings.Asr
+            document.getElementById("Maghrib-time").innerHTML = timings.Maghrib
+            document.getElementById("Isha-time").innerHTML = timings.Isha
+
+            const readableDate = response.data.data.date.readable
+            const theDayname = response.data.data.date.hijri.weekday.ar
+            const date = theDayname + " " + readableDate
+            document.getElementById("displayDate").innerHTML = date
+
+
+
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
 
 </script>
 
