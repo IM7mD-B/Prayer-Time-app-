@@ -174,51 +174,81 @@
 <script src="./node_modules/axios/dist/axios.min.js"></script>
 <script>
     const cities = [
-        "الرياض", "جدة", "مكة", "المدينة"
+        // "الرياض", "جدة", "مكة", "المدينة" 
+        // بدلت المصفوفة وخليتها مصفوفة من اوبجيكتات عشان اقدر اربط الاسم بالعربي والاسم بالصيغة العالمية
+        {
+            cityNameByAR: "مكة المكرمة",
+            isoCode: "Makkah al Mukarramah"
+        },
+
+        {
+            cityNameByAR: "الرياض",
+            isoCode: "Ar Riyāḑ"
+        }
+
     ]
+
+
     for (let city of cities) {
         const content = `
-    <option>${city}</option>
+    <option>${city.cityNameByAR}</option>
     `
         document.getElementById("cities-select").innerHTML += content
 
     }
-
+    //الدالة المسؤولة عن اخذ القيم من المستخدم في الدروب ليست 
     document.getElementById("cities-select").addEventListener("change", function () {
-        citySelected= this.value
+        let cityName = ""
+        for (let city of cities) {
+            if (this.value == city.cityNameByAR) {  //نسيت تكرار علامة يساوي للمقارنة وسبب مشكلة في الدروب ليست وخلت اذا جاء الرياض ما ترجع لمكة  
+                cityName = city.isoCode
+            }
+        }
+        console.log(cityName)
         
+
+        // citySelected = this.value //القيمة اللي بتختارها من الدروب ليست تتسجل هنا 
     })
 
 
 
-    let params = {
-        country: "SA",
-        city: "Makkah al Mukarramah"
+
+
+
+    getAllTimingsByCityName("Ar Riyāḑ")
+
+    function getAllTimingsByCityName(cityName) {
+
+        let params = {
+            country: "SA",
+            city: cityName
+        }
+        axios.get('https://api.aladhan.com/v1/timingsByCity', {
+            params: params
+        })
+            .then(function (response) {
+                const timings = response.data.data.timings
+                console.log(response.data.data.date.hijri.weekday.ar);
+                document.getElementById("Fajr-time").innerHTML = timings.Fajr
+                document.getElementById("Sunrise-time").innerHTML = timings.Sunrise
+                document.getElementById("Dhuhr-time").innerHTML = timings.Dhuhr
+                document.getElementById("Asr-time").innerHTML = timings.Asr
+                document.getElementById("Maghrib-time").innerHTML = timings.Maghrib
+                document.getElementById("Isha-time").innerHTML = timings.Isha
+
+                const readableDate = response.data.data.date.readable
+                const theDayname = response.data.data.date.hijri.weekday.ar
+                const date = theDayname + " " + readableDate
+                document.getElementById("displayDate").innerHTML = date
+
+
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
     }
-    axios.get('https://api.aladhan.com/v1/timingsByCity', {
-        params: params
-    })
-        .then(function (response) {
-            const timings = response.data.data.timings
-            console.log(response.data.data.date.hijri.weekday.ar);
-            document.getElementById("Fajr-time").innerHTML = timings.Fajr
-            document.getElementById("Sunrise-time").innerHTML = timings.Sunrise
-            document.getElementById("Dhuhr-time").innerHTML = timings.Dhuhr
-            document.getElementById("Asr-time").innerHTML = timings.Asr
-            document.getElementById("Maghrib-time").innerHTML = timings.Maghrib
-            document.getElementById("Isha-time").innerHTML = timings.Isha
 
-            const readableDate = response.data.data.date.readable
-            const theDayname = response.data.data.date.hijri.weekday.ar
-            const date = theDayname + " " + readableDate
-            document.getElementById("displayDate").innerHTML = date
-
-
-
-        })
-        .catch(function (error) {
-            console.log(error);
-        })
 
 </script>
 
