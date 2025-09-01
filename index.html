@@ -115,7 +115,7 @@
 <body>
     <!-- Header -->
     <div class="header-section">
-        <h1>الرياض</h1>
+        <h1 id="Header-name">الرياض</h1>
         <h6 id="displayDate"></h6>
         <hr>
     </div>
@@ -184,6 +184,10 @@
         {
             cityNameByAR: "الرياض",
             isoCode: "Ar Riyāḑ"
+        },
+        {
+            cityNameByAR: "الجوف",
+            isoCode: "Al Jawf"
         }
 
     ]
@@ -202,20 +206,28 @@
         for (let city of cities) {
             if (this.value == city.cityNameByAR) {  //نسيت تكرار علامة يساوي للمقارنة وسبب مشكلة في الدروب ليست وخلت اذا جاء الرياض ما ترجع لمكة  
                 cityName = city.isoCode
+                ARcityName = city.cityNameByAR
             }
         }
-        console.log(cityName)
-        
+        document.getElementById("Header-name").innerHTML = ARcityName
 
+        // console.log(cityName)
+
+        getAllTimingsByCityName(cityName)
         // citySelected = this.value //القيمة اللي بتختارها من الدروب ليست تتسجل هنا 
+
+        // خاص بالهيدر
+
+        // document.getElementById("Header-name").innerHTML = HeaderName
     })
 
 
 
+    getAllTimingsByCityName("Ar Riyāḑ")   // هنا يحدد القيمة الافتراضية للموقع 
 
 
 
-    getAllTimingsByCityName("Ar Riyāḑ")
+
 
     function getAllTimingsByCityName(cityName) {
 
@@ -228,7 +240,7 @@
         })
             .then(function (response) {
                 const timings = response.data.data.timings
-                console.log(response.data.data.date.hijri.weekday.ar);
+                // console.log(response.data.data.date.hijri.weekday.ar);
                 document.getElementById("Fajr-time").innerHTML = timings.Fajr
                 document.getElementById("Sunrise-time").innerHTML = timings.Sunrise
                 document.getElementById("Dhuhr-time").innerHTML = timings.Dhuhr
@@ -236,10 +248,14 @@
                 document.getElementById("Maghrib-time").innerHTML = timings.Maghrib
                 document.getElementById("Isha-time").innerHTML = timings.Isha
 
+
+                //خاص بالوقت واليوم 
+
                 const readableDate = response.data.data.date.readable
                 const theDayname = response.data.data.date.hijri.weekday.ar
                 const date = theDayname + " " + readableDate
                 document.getElementById("displayDate").innerHTML = date
+
 
 
 
