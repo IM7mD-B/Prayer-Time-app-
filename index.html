@@ -231,12 +231,12 @@
 
     function getAllTimingsByCityName(cityName) {
 
-        let params = {
+        let params = {        //للـ query params 
             country: "SA",
             city: cityName
         }
         axios.get('https://api.aladhan.com/v1/timingsByCity', {
-            params: params
+            params: params       //للـ query params 
         })
             .then(function (response) {
                 const timings = response.data.data.timings
